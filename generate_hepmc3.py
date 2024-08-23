@@ -18,7 +18,7 @@ writer = HepMC3.WriterAscii("output_" + str(sys.argv[2]) + "_" + str(sys.argv[4]
 
 for ix in range(n_events):
 
-    theta1 = (155./180.)*np.pi
+    theta1 = (150./180.)*np.pi
     phi = (1./4.) * np.pi
     ###if ix < skip:
     ###    continue

@@ -1,4 +1,4 @@
-# submitReco.job -- submit reco
+# submitSim.job -- submit sim
 
 Universe        		= vanilla
 GetEnv          		= False
@@ -25,18 +25,18 @@ Rank		= CPU_Speed
 # Used to give jobs a directory with respect to file input and output.
 Initialdir      = /gpfs/mnt/gpfs02/eic/lkosarzew/Calorimetry/Simulations/HepMcSim
 
-executable              = runRecoEICrecon.sh
-arguments               = hcal_neutron_pion_563717_$(Process)_sim.edm4hep.root condorReco/output/hcal_neutron_pion_$(Cluster)_$(Process)_reco.edm4eic.root $(Process) $(Cluster)
+executable              = runSimBatch_HepMC.sh
+arguments               = output_10_neutron_pion.hepmc3 hcal_neutron_pion_$(Cluster)_$(Process)_sim.edm4hep.root $(Process) $(Cluster)
 
-transfer_input_files    = condorSim/output/hcal_neutron_pion_563717_$(Process)_sim.edm4hep.root,runRecoEICrecon.sh,epic,EICrecon
+transfer_input_files    = runSimBatch_HepMC.sh,output_10_neutron_pion.hepmc3,epic
 should_transfer_files   = YES
 when_to_transfer_output = ON_EXIT_OR_EVICT
-transfer_output_files   = condorReco
+transfer_output_files   = condorSim
 
 
-Error                   = condorReco/stderr/$(Cluster)_$(Process).err
-Output                  = condorReco/stdout/$(Cluster)_$(Process).out
-Log                     = condorReco/log/$(Cluster)_$(Process).log
+Error                   = condorSim/stderr/$(Cluster)_$(Process).err
+Output                  = condorSim/stdout/$(Cluster)_$(Process).out
+Log                     = condorSim/log/$(Cluster)_$(Process).log
 
 #+Experiment     = "experiment"
 #+Job_Type       = "cas"
