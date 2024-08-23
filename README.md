@@ -25,7 +25,7 @@ condor_submit submitReco.job | tee reco.log
 Replace the line in condor job description file: 
 
 ```Sh
-+SingularityImage="/cvmfs/singularity.opensciencegrid.org/eicweb/jug_xl:nightly"
++SingularityImage="/cvmfs/singularity.opensciencegrid.org/eicweb/eic_xl:nightly"
 ```
 
 with the following to select version eg. `23.11-stable`:
